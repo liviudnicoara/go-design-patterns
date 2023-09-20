@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/liviudnicoara/go-design-patterns/9.Prototype/page"
+	"github.com/liviudnicoara/go-design-patterns/4.Prototype/page"
 )
 
 // The prototype design pattern involves creating objects based on a template of an existing object through cloning.
