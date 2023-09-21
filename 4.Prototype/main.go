@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-
-	"github.com/liviudnicoara/go-design-patterns/4.Prototype/page"
 )
 
 // The prototype design pattern involves creating objects based on a template of an existing object through cloning.
@@ -13,9 +11,27 @@ import (
 // to create a new object.
 // This pattern provides a mechanism to copy the original object to a new object and then modify it according to our needs.
 
+type Page interface {
+	Clone() Page
+}
+
+type PaymentPage struct {
+	Provider    string
+	Token       string
+	Certificate os.File
+}
+
+func (p *PaymentPage) Clone() Page {
+	return &PaymentPage{
+		Provider:    p.Provider,
+		Token:       p.Token,
+		Certificate: p.Certificate,
+	}
+}
+
 func main() {
 
-	prototype := &page.PaymentPage{
+	prototype := &PaymentPage{
 		Provider:    "MasterCard",
 		Token:       "eyJhbGciOiJIUzI1NiJ...",
 		Certificate: *os.NewFile(1, "certificate"),
